@@ -1,23 +1,17 @@
+import React from "react";
+import styled from "styled-components";
+import Bottom from "./Bottom";
+import Top from "./Top";
 
-function App() {
+export default function RenderApp() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <App>
+      <Top></Top>
+      <Bottom></Bottom>
+    </App>
   );
+
 }
 
-export default App;
+const App = styled.div`
+`
