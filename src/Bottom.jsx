@@ -21,7 +21,7 @@ const Bot = styled.div`
         align-items: center;
         box-shadow: 0px -4px 6px 0px #0000000D;
     p {
-        font-family: Recursive;
+        font-family: Recursive, sans-serif;
         font-size: 18px;
         font-weight: 400;
         line-height: 22px;

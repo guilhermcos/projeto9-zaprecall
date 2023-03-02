@@ -23,7 +23,7 @@ img{
 }
 h1 {
     color: #ffffff;
-    font-family: Righteous;
+    font-family: Righteous, sans-serif;
     font-size: 36px;
     font-weight: 700;
     line-height: 45px;
