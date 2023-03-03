@@ -171,6 +171,7 @@ const Card = styled.div`
 `
 
 const ContainerCards = styled.div`
+    perspective: 1000px;
     width: 100%;
     padding-top: 30px;
     display: flex;
