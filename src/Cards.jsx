@@ -50,10 +50,12 @@ export default function Cards(props) {
 
 const BackFace = styled.div`
     position: relative;
-    transform: rotateY(180deg);
     backface-visibility: hidden;
+    transform: rotateY(180deg);
     display: flex;
     align-items: center;
+    background-color: #ffffff;
+    border-radius: 5px;
     p{
     font-family: Recursive,sans-serif;
     font-size: 18px;
@@ -127,8 +129,8 @@ const CardStarted = styled.div`
         border-radius: 5px;
         box-shadow: 0px 4px 5px 0px #00000026;
         transform-style: preserve-3d;
-        transition: all 0.4s ease-in-out;
-        transform: ${props => props.virar ? 'rotateY(180deg)' : 'rotateY(0deg)'};
+        transition: transform 0.5s ;
+        transform: ${props => props.virar ? 'rotateY(180deg)' : "none"};
     p {
         font-family: Recursive, sans-serif;
         font-size: 16px;
