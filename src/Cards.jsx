@@ -21,16 +21,16 @@ export default function Cards(props) {
         } else {
             return (
                 <CardStarted virar={virar} key={cardContent.question}>
-                    <FrontFace>
+                    <FrontFace virar={virar}>
                         <p>{cardContent.question}</p>
                         <img onClick={() => setVirar(!virar)} src="assets/seta_virar.png" alt="" />
                     </FrontFace>
-                    <BackFace>
+                    <BackFace virar={virar}>
                         <p>{cardContent.answer}</p>
                         <div>
-                            <button className="vermelho">Não lembrei</button>
-                            <button className="amarelo">Quase não lembrei</button>
-                            <button className="verde">Zap!</button>
+                            <button onClick={() => {setSelecionado(false); setVirar(!virar)}}  className="vermelho">Não lembrei</button>
+                            <button onClick={() => {setSelecionado(false); setVirar(!virar)}} className="amarelo">Quase não lembrei</button>
+                            <button onClick={() => {setSelecionado(false); setVirar(!virar)}} className="verde">Zap!</button>
                         </div>
                     </BackFace>
                 </CardStarted>
@@ -49,15 +49,15 @@ export default function Cards(props) {
 }
 
 const BackFace = styled.div`
-    position: relative;
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
     transform: rotateY(180deg);
-    display: flex;
+    ${(props) => (props.virar) ? "transform: rotateY(0deg);" : "transition: rotateY(180deg);"}
+    position: relative;
     align-items: center;
     background-color: #ffffff;
-    border-radius: 5px;
-    z-index: 2;
+    display: flex;
     border-radius: 5px;
     p{
     font-family: Recursive,sans-serif;
@@ -74,7 +74,7 @@ const BackFace = styled.div`
 
     div {
         width: 100%;
-        margin-top: 60px;
+        margin-top: 80px;
         display: flex;
         gap: 8px;
         justify-content: center;
@@ -109,8 +109,11 @@ const BackFace = styled.div`
 `
 
 const FrontFace = styled.div`
-    -webkit-backface-visibility: hidden;
     backface-visibility: hidden;
+    transition: all .5s;
+    transform-style: preserve-3d;
+    ${(props) => (props.virar) ? "transition: rotateY(-180deg);" : "transition: rotateY(0deg);"}
+    position: relative;
 p{
     position: absolute;
     top: 18px;
@@ -121,7 +124,7 @@ p{
 img{
     width: 25px;
     position: absolute;
-    top: 75px;
+    top: 90px;
     right: 16px;
 }
 `
@@ -129,13 +132,9 @@ img{
 const CardStarted = styled.div`
         background-color: #ffffff;
         width: 300px;
-        height: 100px;
+        height: 120px;
         border-radius: 5px;
         box-shadow: 0px 4px 5px 0px #00000026;
-        -webkit-transform-style: preserve-3d;
-        transform-style: preserve-3d;
-        transition: transform 0.5s ;
-        transform: ${props => props.virar ? 'rotateY(180deg)' : "rotateY(0deg)"};
     p {
         font-family: Recursive, sans-serif;
         font-size: 16px;
