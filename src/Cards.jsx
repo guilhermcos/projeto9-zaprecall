@@ -55,6 +55,7 @@ const BackFace = styled.div`
     display: flex;
     align-items: center;
     background-color: #ffffff;
+    z-index: 2;
     border-radius: 5px;
     p{
     font-family: Recursive,sans-serif;
