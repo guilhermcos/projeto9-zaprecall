@@ -43,18 +43,17 @@ export default function Cards(props) {
         const [lembrei, setLembrei] = useState("não jogado")
         cont++
 
-
         if (!selecionado) {
             return seLembrou(selecionado, setSelecionado, lembrei, setLembrei, cardContent, cont);
         } else {
             return (
                 <CardStarted data-test="flashcard" virar={virar} key={cardContent.question}>
                     <FrontFace virar={virar}>
-                        <p data-test="flashcard-text">{cardContent.question}</p>
-                        <img data-test="turn-btn" onClick={() => setVirar(!virar)} src="assets/seta_virar.png" alt="" />
+                        <p data-test={() => !virar ? "flashcard-text" : null}>{cardContent.question}</p>
+                        <img data-test='turn-btn' onClick={() => setVirar(!virar)} src="assets/seta_virar.png" alt="" />
                     </FrontFace>
                     <BackFace virar={virar}>
-                        <p data-test="flashcard-text">{cardContent.answer}</p>
+                        <p data-test={() => virar ? "flashcard-text" : null}>{cardContent.answer}</p>
                         <div>
                             <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar) }} className="vermelho">Não lembrei</button>
                             <button data-test="partial-btn" onClick={() => { setLembrei(true); setSelecionado(false); setVirar(!virar) }} className="amarelo">Quase não lembrei</button>
@@ -84,7 +83,7 @@ const BackFace = styled.div`
     ${(props) => (props.virar) ? "transform: rotateY(0deg);" : "transition: rotateY(180deg);"}
     position: relative;
     align-items: center;
-    background-color: #ffffff;
+    background-color: #FFFFD4;
     display: flex;
     border-radius: 5px;
     p{
@@ -159,7 +158,7 @@ img{
 `
 
 const CardStarted = styled.div`
-        background-color: #ffffff;
+        background-color: #FFFFD4;
         width: 300px;
         height: 120px;
         border-radius: 5px;
