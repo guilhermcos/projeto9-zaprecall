@@ -49,11 +49,11 @@ export default function Cards(props) {
         } else {
             return (
                 <CardStarted virar={virar} key={cardContent.question}>
-                    <FrontFace virar={virar}>
+                    <FrontFace data-test="flash-card" virar={virar}>
                         <p data-test="flashcard-text">{cardContent.question}</p>
                         <img data-test="turn-btn" onClick={() => setVirar(!virar)} src="assets/seta_virar.png" alt="" />
                     </FrontFace>
-                    <BackFace virar={virar}>
+                    <BackFace data-test="flash-card" virar={virar}>
                         <p data-test="flashcard-text">{cardContent.answer}</p>
                         <div>
                             <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar) }} className="vermelho">Não lembrei</button>
