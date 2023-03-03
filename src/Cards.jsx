@@ -5,32 +5,60 @@ import styled from "styled-components";
 
 export default function Cards(props) {
 
+    function seLembrou(selecionado, setSelecionado, lembrei, setLembrei, cardContent, cont) {
+        if (lembrei === "não jogado") {
+            return (
+                <Card data-test="flashcard" selecionado={selecionado} key={cardContent.question}>
+                    <p data-test="flashcard-text">Pergunta {cont}</p>
+                    <img data-test="play-btn" onClick={() => setSelecionado(true)} src="assets/seta_play.png" alt="" />
+                </Card>
+            )
+        } else if (lembrei == "zap") {
+            return (
+                <Card data-test="flashcard" lembrei={lembrei} selecionado={selecionado} key={cardContent.question}>
+                    <p data-test="flashcard-text">Pergunta {cont}</p>
+                    <img data-test="zap-icon" onClick={() => setSelecionado(true)} src="assets/icone_certo.png" alt="" />
+                </Card>
+            )
+        } else if (lembrei == true) {
+            return (
+                <Card data-test="flashcard" lembrei={lembrei} selecionado={selecionado} key={cardContent.question}>
+                    <p data-test="flashcard-text">Pergunta {cont}</p>
+                    <img data-test="partial-icon" onClick={() => setSelecionado(true)} src="assets/icone_quase.png" alt="" />
+                </Card>
+            )
+        } else if (lembrei == false) {
+            return (
+                <Card data-test="flashcard" lembrei={lembrei} selecionado={selecionado} key={cardContent.question}>
+                    <p data-test="flashcard-text">Pergunta {cont}</p>
+                    <img data-test="no-icon" onClick={() => setSelecionado(true)} src="assets/icone_erro.png" alt="" />
+                </Card>
+            )
+        } 
+    }
+
     function RenderCards(cardContent) {
         const [selecionado, setSelecionado] = useState(false);
-        const [virar, setVirar] = useState(false)
+        const [virar, setVirar] = useState(false);
+        const [lembrei, setLembrei] = useState("não jogado")
         cont++
 
 
         if (!selecionado) {
-            return (
-                <Card selecionado={selecionado} key={cardContent.question}>
-                    <p>Pergunta {cont}</p>
-                    <img onClick={() => setSelecionado(true)} src="assets/seta_play.png" alt="" />
-                </Card>
-            )
+            return seLembrou(selecionado, setSelecionado, lembrei, setLembrei, cardContent, cont);
         } else {
             return (
                 <CardStarted virar={virar} key={cardContent.question}>
                     <FrontFace virar={virar}>
-                        <p>{cardContent.question}</p>
-                        <img onClick={() => setVirar(!virar)} src="assets/seta_virar.png" alt="" />
+                        <p data-test="flashcard-text">{cardContent.question}</p>
+                        <img data-test="turn-btn" onClick={() => setVirar(!virar)} src="assets/seta_virar.png" alt="" />
                     </FrontFace>
                     <BackFace virar={virar}>
-                        <p>{cardContent.answer}</p>
+                        <p data-test="flashcard-text">{cardContent.answer}</p>
                         <div>
-                            <button onClick={() => {setSelecionado(false); setVirar(!virar)}}  className="vermelho">Não lembrei</button>
-                            <button onClick={() => {setSelecionado(false); setVirar(!virar)}} className="amarelo">Quase não lembrei</button>
-                            <button onClick={() => {setSelecionado(false); setVirar(!virar)}} className="verde">Zap!</button>
+                            <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar) }} className="vermelho">Não lembrei</button>
+                            <button data-test="partial-btn" onClick={() => { setLembrei(true); setSelecionado(false); setVirar(!virar) }} className="amarelo">Quase não lembrei</button>
+                            <button data-test="zap-btn" onClick={() => { setLembrei("zap"); setSelecionado(false); setVirar(!virar) }} className="verde">Zap!</button>
                         </div>
                     </BackFace>
                 </CardStarted>
@@ -81,6 +109,7 @@ const BackFace = styled.div`
     }
 
     button{
+        padding: 0;
         border-radius: 5px;
         border: none;
         width: 82px;
@@ -164,7 +193,9 @@ const Card = styled.div`
         line-height: 19px;
         letter-spacing: 0em;
         text-align: left;
-
+        ${ (props) => (props.lembrei==="zap") ? "color: green; text-decoration: line-through;" : null}
+        ${ (props) => (props.lembrei===true) ? "color: yellow; text-decoration: line-through;" : null}
+        ${ (props) => (props.lembrei===false) ? "color: red; text-decoration: line-through;" : null}
     }
 
 `
