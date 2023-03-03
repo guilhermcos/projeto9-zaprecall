@@ -27,7 +27,11 @@ export default function Cards(props) {
                     </FrontFace>
                     <BackFace>
                         <p>{cardContent.answer}</p>
-                        <img src="assets/seta_virar.png" alt="" />
+                        <div>
+                            <button className="vermelho">Não lembrei</button>
+                            <button className="amarelo">Quase não lembrei</button>
+                            <button className="verde">Zap!</button>
+                        </div>
                     </BackFace>
                 </CardStarted>
             )
@@ -45,8 +49,58 @@ export default function Cards(props) {
 }
 
 const BackFace = styled.div`
+    position: relative;
     transform: rotateY(180deg);
     backface-visibility: hidden;
+    display: flex;
+    align-items: center;
+    p{
+    font-family: Recursive,sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    line-height: 22px;
+    letter-spacing: 0em;
+    text-align: left;
+    position: absolute;
+    top: 12px;
+    left: 15px;
+    flex-wrap: wrap;
+    }
+
+    div {
+        width: 100%;
+        margin-top: 60px;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+    }
+
+    button{
+        border-radius: 5px;
+        border: none;
+        width: 80px;
+        height: 35px;
+        font-family: Recursive;
+        font-size: 12px;
+        font-weight: 400;
+        line-height: 14px;
+        letter-spacing: 0em;
+        text-align: center;
+        color: #ffffff;
+
+    }
+
+    .vermelho {
+        background-color: #FF3030;
+    }
+
+    .amarelo {
+        background-color: #FF922E;
+    }
+
+    .verde {
+        background-color: #2FBE34;
+    }
 `
 
 const FrontFace = styled.div`
@@ -72,12 +126,6 @@ const CardStarted = styled.div`
         height: 100px;
         border-radius: 5px;
         box-shadow: 0px 4px 5px 0px #00000026;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        position: relative;
-        padding-left: 15px;
-        padding-right: 22px;
         transform-style: preserve-3d;
         transition: all 0.4s ease-in-out;
         transform: ${props => props.virar ? 'rotateY(180deg)' : 'rotateY(0deg)'};
