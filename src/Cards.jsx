@@ -193,9 +193,9 @@ const Card = styled.div`
         line-height: 19px;
         letter-spacing: 0em;
         text-align: left;
-        ${ (props) => (props.lembrei==="zap") ? "color: green; text-decoration: line-through;" : null}
-        ${ (props) => (props.lembrei===true) ? "color: yellow; text-decoration: line-through;" : null}
-        ${ (props) => (props.lembrei===false) ? "color: red; text-decoration: line-through;" : null}
+        ${ (props) => (props.lembrei==="zap") ? "color: #2FBE34; text-decoration: line-through;" : null}
+        ${ (props) => (props.lembrei===true) ? "color: #FF922E; text-decoration: line-through;" : null}
+        ${ (props) => (props.lembrei===false) ? "color: #FF3030; text-decoration: line-through;" : null}
     }
 
 `
