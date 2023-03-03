@@ -55,6 +55,7 @@ const BackFace = styled.div`
     display: flex;
     align-items: center;
     background-color: #ffffff;
+    border-radius: 5px;
     z-index: 2;
     border-radius: 5px;
     p{
@@ -107,7 +108,7 @@ const BackFace = styled.div`
 `
 
 const FrontFace = styled.div`
-    backface-visibility: hidden;
+    transform: translateZ(0);
 p{
     position: absolute;
     top: 18px;
@@ -118,8 +119,8 @@ p{
 img{
     width: 25px;
     position: absolute;
+    top: 75px;
     right: 16px;
-    bottom: 10px;
 }
 `
 
