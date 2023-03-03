@@ -17,21 +17,21 @@ export default function Cards(props) {
             return (
                 <Card data-test="flashcard" lembrei={lembrei} selecionado={selecionado} key={cardContent.question}>
                     <p data-test="flashcard-text">Pergunta {cont}</p>
-                    <img data-test="zap-icon" onClick={() => setSelecionado(true)} src="assets/icone_certo.png" alt="" />
+                    <img data-test="zap-icon" src="assets/icone_certo.png" alt="" />
                 </Card>
             )
         } else if (lembrei == true) {
             return (
                 <Card data-test="flashcard" lembrei={lembrei} selecionado={selecionado} key={cardContent.question}>
                     <p data-test="flashcard-text">Pergunta {cont}</p>
-                    <img data-test="partial-icon" onClick={() => setSelecionado(true)} src="assets/icone_quase.png" alt="" />
+                    <img data-test="partial-icon" src="assets/icone_quase.png" alt="" />
                 </Card>
             )
         } else if (lembrei == false) {
             return (
                 <Card data-test="flashcard" lembrei={lembrei} selecionado={selecionado} key={cardContent.question}>
                     <p data-test="flashcard-text">Pergunta {cont}</p>
-                    <img data-test="no-icon" onClick={() => setSelecionado(true)} src="assets/icone_erro.png" alt="" />
+                    <img data-test="no-icon" src="assets/icone_erro.png" alt="" />
                 </Card>
             )
         } 
@@ -55,9 +55,9 @@ export default function Cards(props) {
                     <BackFace virar={virar}>
                         <p data-test={ virar ? "flashcard-text" : null}>{cardContent.answer}</p>
                         <div>
-                            <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar) }} className="vermelho">Não lembrei</button>
-                            <button data-test="partial-btn" onClick={() => { setLembrei(true); setSelecionado(false); setVirar(!virar) }} className="amarelo">Quase não lembrei</button>
-                            <button data-test="zap-btn" onClick={() => { setLembrei("zap"); setSelecionado(false); setVirar(!virar) }} className="verde">Zap!</button>
+                            <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1) }} className="vermelho">Não lembrei</button>
+                            <button data-test="partial-btn" onClick={() => { setLembrei(true); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1) }} className="amarelo">Quase não lembrei</button>
+                            <button data-test="zap-btn" onClick={() => { setLembrei("zap"); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1) }} className="verde">Zap!</button>
                         </div>
                     </BackFace>
                 </CardStarted>
@@ -74,6 +74,11 @@ export default function Cards(props) {
         </ContainerCards>
     )
 }
+
+
+
+
+//STYLED COMPONENTS
 
 const BackFace = styled.div`
     backface-visibility: hidden;

@@ -1,10 +1,10 @@
 import React from "react";
 import styled from "styled-components";
 
-export default function Bottom(){
+export default function Bottom(props){
     return (
-        <Bot>
-            <p>0/4 CONCLUÍDOS</p>
+        <Bot data-test="footer">
+            <p>{props.concluidos}/8 CONCLUÍDOS</p>
         </Bot>
     )
 }

@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import Bottom from "./Bottom";
 import Top from "./Top";
 import Cards from "./Cards";
 
 export default function RenderApp() {
+  const [concluidos, setConcluidos] = useState(0);
 
   const CARDSCONTENT = [
     { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
@@ -21,11 +22,10 @@ export default function RenderApp() {
   return (
     <App>
       <Top></Top>
-      <Cards cardsContent={CARDSCONTENT}></Cards>
-      <Bottom></Bottom>
+      <Cards concluidos={concluidos} setConcluidos={setConcluidos} cardsContent={CARDSCONTENT}></Cards>
+      <Bottom concluidos={concluidos}></Bottom>
     </App>
   );
-
 }
 
 
