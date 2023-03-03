@@ -76,15 +76,15 @@ const BackFace = styled.div`
         width: 100%;
         margin-top: 80px;
         display: flex;
-        gap: 8px;
+        gap: 5px;
         justify-content: center;
     }
 
     button{
         border-radius: 5px;
         border: none;
-        width: 80px;
-        height: 35px;
+        width: 82px;
+        height: 38px;
         font-family: Recursive;
         font-size: 12px;
         font-weight: 400;
