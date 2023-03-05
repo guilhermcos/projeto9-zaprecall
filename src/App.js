@@ -6,6 +6,7 @@ import Cards from "./Cards";
 
 export default function RenderApp() {
   const [concluidos, setConcluidos] = useState(0);
+  const [listaBottom, setListaBottom] = useState([]);
 
   const CARDSCONTENT = [
     { question: "O que é JSX?", answer: "Uma extensão da linguagem JavaScript" },
@@ -22,8 +23,8 @@ export default function RenderApp() {
   return (
     <App>
       <Top></Top>
-      <Cards concluidos={concluidos} setConcluidos={setConcluidos} cardsContent={CARDSCONTENT}></Cards>
-      <Bottom concluidos={concluidos}></Bottom>
+      <Cards listaBottom={listaBottom} setListaBottom={setListaBottom} concluidos={concluidos} setConcluidos={setConcluidos} cardsContent={CARDSCONTENT}></Cards>
+      <Bottom listaBottom={listaBottom} concluidos={concluidos}></Bottom>
     </App>
   );
 }

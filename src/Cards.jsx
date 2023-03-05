@@ -55,9 +55,9 @@ export default function Cards(props) {
                     <BackFace virar={virar}>
                         <p data-test={ virar ? "flashcard-text" : null}>{cardContent.answer}</p>
                         <div>
-                            <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1) }} className="vermelho">Não lembrei</button>
-                            <button data-test="partial-btn" onClick={() => { setLembrei(true); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1) }} className="amarelo">Quase não lembrei</button>
-                            <button data-test="zap-btn" onClick={() => { setLembrei("zap"); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1) }} className="verde">Zap!</button>
+                            <button data-test="no-btn" onClick={() => { setLembrei(false); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1); props.setListaBottom([...props.listaBottom, "não"]) }} className="vermelho">Não lembrei</button>
+                            <button data-test="partial-btn" onClick={() => { setLembrei(true); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1); props.setListaBottom([...props.listaBottom, "quase"]) }} className="amarelo">Quase não lembrei</button>
+                            <button data-test="zap-btn" onClick={() => { setLembrei("zap"); setSelecionado(false); setVirar(!virar); props.setConcluidos(props.concluidos+1); props.setListaBottom([...props.listaBottom, "sim"]) }} className="verde">Zap!</button>
                         </div>
                     </BackFace>
                 </CardStarted>
@@ -197,8 +197,8 @@ const Card = styled.div`
         line-height: 19px;
         letter-spacing: 0em;
         text-align: left;
-        ${ (props) => (props.lembrei===true) ? "color: #FF922E; text-decoration: line-through;" : null}
         ${ (props) => (props.lembrei==="zap") ? "color: #2FBE34; text-decoration: line-through;" : null}
+        ${ (props) => (props.lembrei===true) ? "color: #FF922E; text-decoration: line-through;" : null}
         ${ (props) => (props.lembrei===false) ? "color: #FF3030; text-decoration: line-through;" : null}
     }
 
@@ -211,7 +211,7 @@ const ContainerCards = styled.div`
     flex-direction: column;
     align-items: center;
     gap: 20px;
-    overflow: scroll;
-    margin-bottom: 90px;
+    overflow-Y: hidden;
+    margin-bottom: 200px;
     overflow-x: hidden;
 `
