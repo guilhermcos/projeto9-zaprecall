@@ -113,6 +113,7 @@ const BackFace = styled.div`
     }
 
     button{
+        cursor: pointer;
         padding: 0;
         border-radius: 5px;
         border: none;
@@ -155,6 +156,7 @@ p{
 }
     
 img{
+    cursor: pointer;
     width: 25px;
     position: absolute;
     top: 90px;
@@ -200,6 +202,9 @@ const Card = styled.div`
         ${ (props) => (props.lembrei==="zap") ? "color: #2FBE34; text-decoration: line-through;" : null}
         ${ (props) => (props.lembrei===true) ? "color: #FF922E; text-decoration: line-through;" : null}
         ${ (props) => (props.lembrei===false) ? "color: #FF3030; text-decoration: line-through;" : null}
+    }
+    img {
+        cursor: pointer;
     }
 
 `

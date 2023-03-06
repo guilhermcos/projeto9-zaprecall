@@ -23,15 +23,15 @@ export default function Bottom(props) {
                         <img src="assets/sad.png" alt="" />
                         <h1>Putz...</h1>
                     </div>
+                    <h2>Ainda faltam alguns...<br></br> Mas não desanime</h2>
                 </div>
-                <h2>Ainda faltam alguns...<br></br> Mas não desanime</h2>
                 <p>{props.concluidos}/8 CONCLUÍDOS</p>
                 <div className="icons">
                     {answers}
                 </div>
             </Bot>
         )
-    } else if (answers.length === 8) {
+    } else if (answers.length === 1) {
         return (
             <Bot data-test="footer">
                 <div data-test="finish-text">
@@ -39,8 +39,8 @@ export default function Bottom(props) {
                         <img src="assets/party.png" alt="" />
                         <h1>Parabéns...</h1>
                     </div>
+                    <h2>Você não esqueceu de <br></br>nenhum flashcard!</h2>
                 </div>
-                <h2>Você não esqueceu de <br></br>nenhum flashcard!</h2>
                 <p>{props.concluidos}/8 CONCLUÍDOS</p>
                 <div className="icons">
                     {answers}

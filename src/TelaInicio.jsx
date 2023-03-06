@@ -39,6 +39,7 @@ const Inicio = styled.div`
         text-align: center;
     }
     button {
+        cursor: pointer;
         border-radius: 5px;
         width: 246px;
         height: 54px;
