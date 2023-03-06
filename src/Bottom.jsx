@@ -31,7 +31,7 @@ export default function Bottom(props) {
                 </div>
             </Bot>
         )
-    } else if (answers.length === 1) {
+    } else if (answers.length === 8) {
         return (
             <Bot data-test="footer">
                 <div data-test="finish-text">
